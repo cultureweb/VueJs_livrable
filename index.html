@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.3/css/bulma.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app" class="container">
+        <img class="img-responsive" v-if="!showImg" src="images/vue.jpg" alt="banner sympa de vue">
+        <label class="checkbox">
+            <input id="checkbox" type="checkbox" v-model="showImg">
+            cacher le header
+        </label>
+        <h1 class="title is-2" :class="{ redFontStyle: isActive }">{{ title }}</h1>
+
+        <form method="POST" action="/">
+
+            <div class="control">
+                <h2 class="title is-4" :class="{ redFontStyle: isActive }"> Mettre à jour le titre :</h2>
+
+                <input type="text" id="name" name="name" class="input" v-model="title">
+
+            </div>
+
+            <div class="control">
+                <h2 class="title is-4" :class="{ redFontStyle: isActive }">{{ title2 }} </h2>
+
+                <input type="text" id="title2" name="description" class="input" v-model="newTitle2">
+
+            </div>
+            <div id="success" v-if="success" class="notification is-primary">
+                <span class="delete" v-on:click="success = !success"></span>
+                <p>bravo votre enregistrement a fonctionné</p>
+            </div>
+
+            <div class="control">
+                <button type="button" class="button is-primary" @click="record">change Title</button>
+            </div>
+            <label class="checkbox">
+                <input id="checkbox" type="checkbox" v-model="isActive">
+                Changer la couleur du titre en rouge
+            </label>
+
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.3/axios.js"></script>
+    <script src="https://unpkg.com/vue@2.1.6/dist/vue.js"></script>
+    <script src="/js/app.js"></script>
+</body>
